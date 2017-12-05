@@ -158,7 +158,7 @@ var linkkien1 = new linkkienModel ({
 linkkien1.save(function(ex,linkkien){
 if(ex) console.log('loi: '+ex);
 //Tim kiem _Id cua link kien de gan vao dien thoai
-linkkienModel.find({name:'Head phone'}).select('_id'').lean().then(id=>{
+linkkienModel.find({name:'Head phone'}).select('_id').lean().then(id=>{
     console.log('Dung _id cua linkkien de gan vao dien thoai'+ id[0]._id);
     var dienthoai1 = new dienthoaiModel({
       name: "iPhone",

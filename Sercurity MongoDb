@@ -1,0 +1,17 @@
+## Bảo mật trong MongoDb
+1. Tạo User và phân quyền User trong DB
+Mở SSH và gõ vào terminal dòng mongo để gọi mongo Client. Sau đó gõ lệnh sau để tạo 1 User:
+User này có quyền dbAdmin và quyền readWrite trong database products.
+```js
+use products
+db.createUser(
+   {
+     user: "user1",
+     pwd: "12345678aA@",
+     roles: [ "readWrite", "dbAdmin" ]
+   }
+)
+```
+Xem thêm về các quyền tại https://docs.mongodb.com/v3.4/reference/built-in-roles/#built-in-roles 
+
+

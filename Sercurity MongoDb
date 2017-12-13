@@ -3,6 +3,7 @@
 Mở SSH và gõ vào terminal dòng mongo để gọi mongo Client. Sau đó gõ lệnh sau để tạo 1 User:
 User này có quyền dbAdmin và quyền readWrite trong database products.
 ```js
+// TẠO NGƯỜI DÙNG CHO DB PRODUCTS
 use products
 db.createUser(
    {
@@ -11,7 +12,13 @@ db.createUser(
      roles: [ "readWrite", "dbAdmin" ]
    }
 )
+
+// THAY ĐỔI PASSWORD CHO USER VỪA TẠO
+use products
+db.changeUserPassword("user1", "password1")
+
 ```
 Xem thêm về các quyền tại https://docs.mongodb.com/v3.4/reference/built-in-roles/#built-in-roles 
+Xem thêm về quản lý người dùng tại https://docs.mongodb.com/v3.4/reference/method/js-user-management/
 
 

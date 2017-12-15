@@ -21,4 +21,15 @@ db.changeUserPassword("user1", "password1")
 Xem thêm về các quyền tại https://docs.mongodb.com/v3.4/reference/built-in-roles/#built-in-roles 
 Xem thêm về quản lý người dùng tại https://docs.mongodb.com/v3.4/reference/method/js-user-management/
 
+2. Kết nối MongoDB Server dùng RoboMongo và SSH
+>> Kết nối SSH sử dụng Putty, 
+vào Putty > Connection/SSH/Tunnels
+Source Port : 27017 (Default MongoDB port)
+Destination : 127.0.0.1:27017
+Chọn mục Local & Auto
+Apply.
 
+Now your local port 27017 is forwarded through your distant 27017 port, you can open Robomongo to connect local 27017. No authentication needed
+Address : localhost : 27017
+
+>> Vào Robomongo kết nối tới localhost: 27017 > Done !

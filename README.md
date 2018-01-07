@@ -64,7 +64,42 @@ Objectid
 Array
 // Xem thêm tại http://mongoosejs.com/docs/schematypes.html
 
-> Schema cũng có option khi khởi tạo. Tuy nhiên opt để làm gì thì chưa biết. Ví dụ lụm được
+> Schema cũng có option khi khởi tạo. 
+> Tuỳ chọn không tạo _id trong các Sub_document
+VD khi khởi tạo mặc định, các sub_document như arrGia sẽ có thêm _id do mongosee tự khai báo như dưới:
+```js
+{
+    "_id" : ObjectId("5a518a9d416caa1048ab0265"),
+    "arrGia" : [ 
+        {
+            "time" : ISODate("2018-01-07T02:49:01.000Z"),
+            "gia" : 550000,
+            "_id" : ObjectId("5a518a9d416caa1048ab0266") //==> ID ko mong muon
+        }
+    ]
+}
+```
+Để loại bỏ _id trên, khai báo _id: false trong Sub_Schema như sau:
+ref: https://stackoverflow.com/a/20558204
+```js
+arrGia: [{
+	_id: false,
+	time: Date,
+	gia: Number
+	}]
+```
+> Ngoài ra còn 1 Option gọi là versionKey sẽ tạo mỗi document 1 field tên là _v . Để bỏ _v này ta khai báo {versionKey: false} trong Schema như sau:
+ref: https://stackoverflow.com/questions/17254008/stop-mongoose-from-creating-id-property-for-sub-document-array-items
+```js
+mongoose.Schema({
+	codeVe: String,
+	arrGia: [{
+		time: Date,
+		gia: Number
+},{_id: false}]
+}, {versionKey: false})
+```
+> Còn nhiều Option tuy nhiên opt để làm gì thì chưa biết. Ví dụ lụm được
 ```js
 const schema = new Schema(
   { name: String},
